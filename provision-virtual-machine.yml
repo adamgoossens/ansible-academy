@@ -1,8 +1,6 @@
-- name: "{{ academy_user }} - provision virtual machine"
+- name: "Provision virtual machine"
   hosts: localhost
   gather_facts: false
   tasks:
-    - debug: var=academy_user
-
-    - name: Deploy AWS CloudFormation stack
+    - name: "{{ academy_user }} - provision virtual machine to Amazon Web Services"
       shell: 'echo "Hello world"'
