@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: "{{ academy_user }} - provision virtual machine"
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Deploy AWS CloudFormation stack
