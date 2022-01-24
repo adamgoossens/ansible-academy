@@ -1,0 +1,5 @@
+- name: Deploy essential eight configuration
+  hosts: localhost
+  tasks:
+    - name: "{{ academy_user }} - include e8 playbook here"
+      shell: 'echo "doing nothing"'

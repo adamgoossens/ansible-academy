@@ -1,0 +1,5 @@
+- name: "Configure web server"
+  hosts: localhost
+  tasks:
+    - name: "{{ academy_user }} - install httpd"
+      shell: 'echo "doing nothing"'
