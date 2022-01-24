@@ -2,5 +2,7 @@
   hosts: localhost
   gather_facts: false
   tasks:
+    - debug: var=academy_user
+
     - name: Deploy AWS CloudFormation stack
       shell: 'echo "Hello world"'
