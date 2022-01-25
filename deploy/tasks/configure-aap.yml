@@ -156,6 +156,7 @@
         vpc: "{{ vpc_id }}"
         subnet: "{{ subnet_id }}"
         securitygroup: "{{ securitygroup_id }}"
+        region: "{{ aws_region }}"
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
