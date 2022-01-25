@@ -6,7 +6,7 @@
       amazon.aws.cloudformation:
         stack_name: "{{ academy_user }}-stack"
         state: present
-        region: '{{ aws_region }}"
+        region: "{{ aws_region }}"
         disable_rollback: true
         template: "files/uservm-stack.yml"
         template_parameters:
