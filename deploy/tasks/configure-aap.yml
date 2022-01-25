@@ -263,7 +263,7 @@
     state: present
     variables:
       ansible_connection: local
-      ansible_platform_interpreter: "{%raw%}{{ ansible_playbook_python }}{%endraw%}"
+      ansible_python_interpreter: "{%raw%}{{ ansible_playbook_python }}{%endraw%}"
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
