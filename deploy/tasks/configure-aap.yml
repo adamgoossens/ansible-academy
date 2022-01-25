@@ -322,7 +322,7 @@
         webservers: "1==1"
       compose:
         ansible_host: public_dns_name
-        ansible_user: ec2-user
+        ansible_user: "'ec2-user'"
   loop: "{{ range(1, number_of_attendees + 1) | list }}"
   vars:
     username: "user{{item}}"
