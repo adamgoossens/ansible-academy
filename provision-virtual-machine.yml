@@ -9,6 +9,7 @@
           User: "{{ academy_user }}"
         vpc_subnet_id: "{{ aws.subnet }}"
         instance_type: "t2.micro"
+        region: "{{ aws.region }}"
         network:
           assign_public_ip: true
           groups:
