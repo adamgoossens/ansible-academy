@@ -239,6 +239,7 @@
         subnet: "{{ subnet_id }}"
         securitygroup: "{{ securitygroup_id }}"
         region: "{{ aws_region }}"
+        ami: "{{ aws_rhel85_ami_id }}"
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
@@ -315,6 +316,13 @@
     source_vars:
       filters:
         tag:User: "{{username}}"
+      regions:
+        - "{{ aws_region }}"
+      groups:
+        webservers: "1==1"
+      compose:
+        ansible_host: public_dns_name
+        ansible_user: ec2-user
   loop: "{{ range(1, number_of_attendees + 1) | list }}"
   vars:
     username: "user{{item}}"
