@@ -11,6 +11,7 @@
         instance_type: "t2.micro"
         region: "{{ aws.region }}"
         image_id: "{{ aws.ami }}"
+        wait: true
         network:
           assign_public_ip: true
           groups:

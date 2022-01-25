@@ -1,5 +1,9 @@
 - name: "Configure web server"
-  hosts: user_vm
+  hosts: webservers
+  become: true
   tasks:
     - name: "{{ academy_user }} - install httpd"
-      shell: 'echo "doing nothing"'
+      package:
+        name:
+          - httpd
+        state: installed
