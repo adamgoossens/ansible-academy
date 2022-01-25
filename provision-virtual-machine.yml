@@ -3,15 +3,13 @@
   gather_facts: false
   tasks:
     - name: "{{ academy_user }} - provision virtual machine"
-      amazon.aws.cloudformation:
-        stack_name: "{{ academy_user }}-stack"
-        state: present
-        region: "{{ aws.region }}"
-        disable_rollback: true
-        template: "files/uservm-stack.yml"
-        template_parameters:
-          SubnetId: "{{ aws.subnet }}"
-          SecurityGroupId: "{{ aws.securitygroup }}"
+      amazon.aws.ec2_instance:
+        name: "{{ academy_user }}-vm"
         tags:
           User: "{{ academy_user }}"
-          Name: "{{ academy_user }}-vm"
+        vpc_subnet_id: "{{ aws.subnet }}"
+        instance_type: "t2.micro"
+        network:
+          assign_public_ip: true
+          groups:
+            - "{{ aws.securitygroup }}"

@@ -43,6 +43,18 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
 
 - name: create Academy Participants team
   awx.awx.team:
@@ -60,6 +72,18 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
 
 - name: Add created users to Academy Participants team
   awx.awx.role:
@@ -70,6 +94,18 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
 
 - name: Add custom execution environment
   awx.awx.execution_environment:
@@ -126,10 +162,24 @@
     user: "{{username}}"
     projects:
       - "{{username}}-project"
-    role: "use"
-  loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
+    role: "{{role}}"
+  loop: "{{ range(1, number_of_attendees|int + 1) | product(['use','update']) | list }}"
   vars:
-    username: "user{{item}}"
+    username: "user{{item[0]}}"
+    role: "{{item[1]}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
+
 
 - name: Create one workflow template for each user
   awx.awx.workflow_job_template:
@@ -139,6 +189,19 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
+
 
 - name: Grant users access to their workflow templates
   awx.awx.role:
@@ -149,6 +212,19 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
+
 
 - name: Create inventory for each user
   awx.awx.inventory:
@@ -166,6 +242,18 @@
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
 
 - name: Add localhost to each user inventory
   awx.awx.host:
@@ -175,9 +263,22 @@
     state: present
     variables:
       ansible_connection: local
+      ansible_platform_interpreter: "{%raw%}{{ ansible_playbook_python }}{%endraw%}"
   loop: "{{ range(1, number_of_attendees|int + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
 
 - name: Grant users access to their inventory
   awx.awx.role:
@@ -189,6 +290,19 @@
   vars:
     username: "user{{ item[0] }}"
     role: "{{ item[1] }}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
+
 
 - name: Add EC2 inventory source
   awx.awx.inventory_source:
@@ -204,3 +318,16 @@
   loop: "{{ range(1, number_of_attendees + 1) | list }}"
   vars:
     username: "user{{item}}"
+  register: _pending
+  async: 120
+  poll: 0
+
+- name: Wait for completion
+  async_status:
+    jid: "{{ item.ansible_job_id }}"
+  register: _jobs
+  until: _jobs.finished
+  delay: 1
+  retries: 30
+  loop: "{{ _pending.results }}"
+
