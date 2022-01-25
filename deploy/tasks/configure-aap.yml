@@ -71,6 +71,12 @@
   vars:
     username: "user{{item}}"
 
+- name: Add custom execution environment
+  awx.awx.execution_environment:
+    name: Academy Environment
+    image: "{{ academy_execution_environment_image }}"
+    pull: always
+
 - name: create AWS inventory credential
   awx.awx.credential:
     name: "Dynamic Inventory"
@@ -191,7 +197,6 @@
     inventory: "{{username}}"
     credential: "Dynamic Inventory"
     overwrite: True
-    update_on_launch: True
     source: ec2
     source_vars:
       filters:

@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  Rhel8AmiId:
+    Type: String
+    Default: ami-0ad5c7d0eee639fe1
+    Description: Enter the AMI ID for RHEL 8 in your region
+  SubnetId:
+    Type: String
+    Description: Enter the subnet ID to attach the VM to
+  SecurityGroupId:
+    Type: String
+    Description: The security group ID to attach to the VM
+Resources:
+  UserVm:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: !Ref Rhel8AmiId
+      KeyName: 'AcademyKey'
+      InstanceType: 't2.micro'
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: '0'
+          GroupSet:
+            - !Ref SecurityGroupId
+          SubnetId: !Ref SubnetId
