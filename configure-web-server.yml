@@ -6,4 +6,24 @@
       package:
         name:
           - httpd
+          - firewalld
         state: installed
+
+    - name: "{{ academy_user }} - ensure firewalld is started"
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: "{{ academy_user }} - ensure httpd starts at boot"
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: "{{ academy_user }} - allow http through the firewall"
+      ansible.posix.firewalld:
+        service: http
+        permanent: yes
+        immediate: yes
+        state: enabled
