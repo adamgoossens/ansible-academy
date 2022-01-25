@@ -12,6 +12,7 @@
         region: "{{ aws.region }}"
         image_id: "{{ aws.ami }}"
         wait: true
+        key_name: 'AcademyKey'
         network:
           assign_public_ip: true
         security_group: "{{ aws.securitygroup }}"
