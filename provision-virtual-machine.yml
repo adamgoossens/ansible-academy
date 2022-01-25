@@ -14,5 +14,4 @@
         wait: true
         network:
           assign_public_ip: true
-          groups:
-            - "{{ aws.securitygroup }}"
+        security_group: "{{ aws.securitygroup }}"
