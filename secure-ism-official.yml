@@ -535,153 +535,156 @@
         - no_reboot_needed
         - package_sudo_installed
 
-    - name: Find /etc/sudoers.d/ files
-      find:
-        paths:
-          - /etc/sudoers.d/
-      register: sudoers
-      tags:
-        - CCE-82202-3
-        - DISA-STIG-RHEL-08-010381
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_remove_no_authenticate
-
-    - name: Remove lines containing !authenticate from sudoers files
-      replace:
-        regexp: (^(?!#).*[\s]+\!authenticate.*$)
-        replace: '# \g<1>'
-        path: '{{ item.path }}'
-        validate: /usr/sbin/visudo -cf %s
-      with_items:
-        - path: /etc/sudoers
-        - '{{ sudoers.files }}'
-      tags:
-        - CCE-82202-3
-        - DISA-STIG-RHEL-08-010381
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_remove_no_authenticate
-
-    - name: Find /etc/sudoers.d/ files
-      find:
-        paths:
-          - /etc/sudoers.d/
-      register: sudoers
-      tags:
-        - CCE-82197-5
-        - DISA-STIG-RHEL-08-010380
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_remove_nopasswd
-
-    - name: Remove lines containing NOPASSWD from sudoers files
-      replace:
-        regexp: (^(?!#).*[\s]+NOPASSWD[\s]*\:.*$)
-        replace: '# \g<1>'
-        path: '{{ item.path }}'
-        validate: /usr/sbin/visudo -cf %s
-      with_items:
-        - path: /etc/sudoers
-        - '{{ sudoers.files }}'
-      tags:
-        - CCE-82197-5
-        - DISA-STIG-RHEL-08-010380
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_remove_nopasswd
-
-    - name: Find /etc/sudoers.d/ files
-      find:
-        paths:
-          - /etc/sudoers.d/
-      register: sudoers
-      tags:
-        - CCE-82279-1
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_require_authentication
-
-    - name: Remove lines containing NOPASSWD from sudoers files
-      replace:
-        regexp: (^(?!#).*[\s]+NOPASSWD[\s]*\:.*$)
-        replace: '# \g<1>'
-        path: '{{ item.path }}'
-        validate: /usr/sbin/visudo -cf %s
-      with_items:
-        - path: /etc/sudoers
-        - '{{ sudoers.files }}'
-      tags:
-        - CCE-82279-1
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_require_authentication
-
-    - name: Find /etc/sudoers.d/ files
-      find:
-        paths:
-          - /etc/sudoers.d/
-      register: sudoers
-      tags:
-        - CCE-82279-1
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_require_authentication
-
-    - name: Remove lines containing !authenticate from sudoers files
-      replace:
-        regexp: (^(?!#).*[\s]+\!authenticate.*$)
-        replace: '# \g<1>'
-        path: '{{ item.path }}'
-        validate: /usr/sbin/visudo -cf %s
-      with_items:
-        - path: /etc/sudoers
-        - '{{ sudoers.files }}'
-      tags:
-        - CCE-82279-1
-        - NIST-800-53-CM-6(a)
-        - NIST-800-53-IA-11
-        - low_complexity
-        - low_disruption
-        - medium_severity
-        - no_reboot_needed
-        - restrict_strategy
-        - sudo_require_authentication
+# agoossens - this is not valid for the student VM; we need this
+# for our automation to run.
+#
+#    - name: Find /etc/sudoers.d/ files
+#      find:
+#        paths:
+#          - /etc/sudoers.d/
+#      register: sudoers
+#      tags:
+#        - CCE-82202-3
+#        - DISA-STIG-RHEL-08-010381
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_remove_no_authenticate
+#
+#    - name: Remove lines containing !authenticate from sudoers files
+#      replace:
+#        regexp: (^(?!#).*[\s]+\!authenticate.*$)
+#        replace: '# \g<1>'
+#        path: '{{ item.path }}'
+#        validate: /usr/sbin/visudo -cf %s
+#      with_items:
+#        - path: /etc/sudoers
+#        - '{{ sudoers.files }}'
+#      tags:
+#        - CCE-82202-3
+#        - DISA-STIG-RHEL-08-010381
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_remove_no_authenticate
+#
+#    - name: Find /etc/sudoers.d/ files
+#      find:
+#        paths:
+#          - /etc/sudoers.d/
+#      register: sudoers
+#      tags:
+#        - CCE-82197-5
+#        - DISA-STIG-RHEL-08-010380
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_remove_nopasswd
+#
+#    - name: Remove lines containing NOPASSWD from sudoers files
+#      replace:
+#        regexp: (^(?!#).*[\s]+NOPASSWD[\s]*\:.*$)
+#        replace: '# \g<1>'
+#        path: '{{ item.path }}'
+#        validate: /usr/sbin/visudo -cf %s
+#      with_items:
+#        - path: /etc/sudoers
+#        - '{{ sudoers.files }}'
+#      tags:
+#        - CCE-82197-5
+#        - DISA-STIG-RHEL-08-010380
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_remove_nopasswd
+#
+#    - name: Find /etc/sudoers.d/ files
+#      find:
+#        paths:
+#          - /etc/sudoers.d/
+#      register: sudoers
+#      tags:
+#        - CCE-82279-1
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_require_authentication
+#
+#    - name: Remove lines containing NOPASSWD from sudoers files
+#      replace:
+#        regexp: (^(?!#).*[\s]+NOPASSWD[\s]*\:.*$)
+#        replace: '# \g<1>'
+#        path: '{{ item.path }}'
+#        validate: /usr/sbin/visudo -cf %s
+#      with_items:
+#        - path: /etc/sudoers
+#        - '{{ sudoers.files }}'
+#      tags:
+#        - CCE-82279-1
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_require_authentication
+#
+#    - name: Find /etc/sudoers.d/ files
+#      find:
+#        paths:
+#          - /etc/sudoers.d/
+#      register: sudoers
+#      tags:
+#        - CCE-82279-1
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_require_authentication
+#
+#    - name: Remove lines containing !authenticate from sudoers files
+#      replace:
+#        regexp: (^(?!#).*[\s]+\!authenticate.*$)
+#        replace: '# \g<1>'
+#        path: '{{ item.path }}'
+#        validate: /usr/sbin/visudo -cf %s
+#      with_items:
+#        - path: /etc/sudoers
+#        - '{{ sudoers.files }}'
+#      tags:
+#        - CCE-82279-1
+#        - NIST-800-53-CM-6(a)
+#        - NIST-800-53-IA-11
+#        - low_complexity
+#        - low_disruption
+#        - medium_severity
+#        - no_reboot_needed
+#        - restrict_strategy
+#        - sudo_require_authentication
 
     - name: Ensure rear is installed
       package:
