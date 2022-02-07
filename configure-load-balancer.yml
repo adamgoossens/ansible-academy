@@ -7,6 +7,7 @@
         protocol: http
         port: 80
         vpc_id: "{{ aws.vpc }}"
+        region: "{{ aws.region }}"
         state: present
 
     - name: Create one target per webserver VM
@@ -14,6 +15,7 @@
         target_group_name: "{{academy_user}}-webserver-group"
         target_id: "{{ instance['instance_id'] }}"
         state: present
+        region: "{{ aws.region }}"
       vars:
         instance: "{{ hostvars[item] }}"
       loop: "{{ groups['webservers'] }}"
@@ -21,6 +23,7 @@
     - name: Establish AWS load balancer
       community.aws.elb_network_lb:
         name: "{{ academy_user }}-webserver-lb"
+        region: "{{ aws.region }}"
         subnets:
           - "{{ aws.subnet }}"
         listeners:
