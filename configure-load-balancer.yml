@@ -10,6 +10,7 @@
         region: "{{ aws.region }}"
         deregistration_delay_timeout: 2
         state: present
+        modify_targets: False
 
     - name: Create one target per webserver VM
       community.aws.elb_target:
