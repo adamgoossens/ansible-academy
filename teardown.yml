@@ -19,6 +19,7 @@
         record: "{{ academy_user }}.{{ aws.hosted_zone }}"
         zone: "{{ aws.hosted_zone }}"
         state: absent
+        type: 'A'
 
     - name: "{{ academy_user }} - destroy elb"
       community.aws.elb_application_lb:
