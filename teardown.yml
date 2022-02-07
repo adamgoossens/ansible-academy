@@ -9,14 +9,10 @@
   tasks:
     - name: "{{ academy_user }} - destroy virtual machines"
       amazon.aws.ec2_instance:
-        name: "{{ academy_user }}-vm-{{idx}}"
         state: absent
         wait: true
-      loop:
-        - "{{ aws.subnet_az_a }}"
-        - "{{ aws.subnet_az_b }}"
-      loop_control:
-        index_var: idx
+        filters:
+          'tag:User': '{{ academy_user }}'
 
     - name: "{{ academy_user }} - destroy elb target group"
       community.aws.elb_target_group:
