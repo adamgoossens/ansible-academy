@@ -4,10 +4,10 @@
   tasks:
     - name: "{{ academy_user }} - provision virtual machine"
       amazon.aws.ec2_instance:
-        name: "{{ academy_user }}-vm-{{item}}"
+        name: "{{ academy_user }}-vm-{{idx}}"
         tags:
           User: "{{ academy_user }}"
-        vpc_subnet_id: "{{ aws.subnet }}"
+        vpc_subnet_id: "{{ item }}"
         instance_type: "t2.medium"
         region: "{{ aws.region }}"
         image_id: "{{ aws.ami }}"
@@ -18,5 +18,7 @@
         security_group: "{{ aws.securitygroup }}"
         state: running
       loop:
-        - 1
-        - 2
+        - "{{ aws.subnet_az_a }}"
+        - "{{ aws.subnet_az_b }}"
+      loop_control:
+        index_var: idx
