@@ -6,7 +6,7 @@
         name: "{{academy_user}}-webserver-group"
         protocol: http
         port: 80
-        vpc_id: "{{ aws.vpc_id }}"
+        vpc_id: "{{ aws.vpc }}"
         state: present
 
     - name: Create one target per webserver VM
@@ -22,7 +22,7 @@
       community.aws.elb_network_lb:
         name: "{{ academy_user }}-webserver-lb"
         subnets:
-          - "{{ aws.subnet_id }}"
+          - "{{ aws.subnet }}"
         listeners:
           - Protocol: TCP
             Port: 80
