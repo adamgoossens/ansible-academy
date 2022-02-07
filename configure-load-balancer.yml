@@ -8,7 +8,7 @@
         port: 80
         vpc_id: "{{ aws.vpc }}"
         region: "{{ aws.region }}"
-        deregistration_delay_timeout_seconds: 2
+        deregistration_delay_timeout: 2
         state: present
 
     - name: Create one target per webserver VM
