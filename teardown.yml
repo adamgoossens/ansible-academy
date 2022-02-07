@@ -5,7 +5,6 @@
     - name: "{{ academy_user }} - destroy virtual machines"
       amazon.aws.ec2_instance:
         state: absent
-        wait: true
         region: "{{ aws.region }}"
         filters:
           'tag:User': '{{ academy_user }}'
