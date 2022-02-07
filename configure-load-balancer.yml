@@ -21,9 +21,11 @@
       loop: "{{ groups['webservers'] }}"
 
     - name: Establish AWS load balancer
-      community.aws.elb_network_lb:
+      community.aws.elb_application_lb:
         name: "{{ academy_user }}-webserver-lb"
         region: "{{ aws.region }}"
+        security_groups:
+          - "{{ aws.securitygroup }}"
         subnets:
           - "{{ aws.subnet }}"
         listeners:
@@ -32,4 +34,7 @@
             DefaultActions:
               - Type: forward
                 TargetGroupName: "{{ academy_user }}-webserver-group"
+        tags:
+          Name: "{{ academy_user }}-webserver-lb"
+
         state: present
