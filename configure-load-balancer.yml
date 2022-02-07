@@ -53,4 +53,4 @@
         state: present
 
     - debug:
-        msg: "Your web application can be accessed here: http://{{ academy_user }}.{{ aws_hosted_zone }}"
+        msg: "Your web application can be accessed here: http://{{ academy_user }}.{{ aws.hosted_zone }}"
