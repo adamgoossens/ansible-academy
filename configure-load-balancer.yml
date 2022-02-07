@@ -51,3 +51,6 @@
         zone: "{{ aws.hosted_zone }}."
         overwrite: yes
         state: present
+
+    - debug:
+        msg: "Your web application can be accessed here: http://{{ academy_user }}.{{ aws_hosted_zone }}"
