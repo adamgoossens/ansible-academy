@@ -25,7 +25,8 @@
         name: "{{ academy_user }}-webserver-lb"
         region: "{{ aws.region }}"
         subnets:
-          - "{{ aws.subnet }}"
+          - "{{ aws.subnet_az_a }}"
+          - "{{ aws.subnet_az_b }}"
         listeners:
           - Protocol: HTTP
             Port: 80
