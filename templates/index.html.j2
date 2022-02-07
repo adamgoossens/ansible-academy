@@ -6,6 +6,7 @@
 		<h1>Welcome, {{ academy_user }}!</h3>
 		<p>You have successfully provisioned a new virtual machine, configured a web server and established security controls.</p>
 		<p>You were able to make all of this available through a simple, step-by-step workflow using Ansible Automation Platform</p>
+    <p>This request was served by the following server: {{ inventory_hostname }}</p>
 		{% if custom_message|default(False) %}
 		<hr/>
 		<p>Your custom message is: {{ custom_message }}</p>
