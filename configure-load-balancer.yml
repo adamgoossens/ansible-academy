@@ -4,7 +4,7 @@
     - name: Create target group
       community.aws.elb_target_group:
         name: "{{academy_user}}-webserver-group"
-        protocol: tcp
+        protocol: http
         port: 80
         vpc_id: "{{ aws.vpc }}"
         region: "{{ aws.region }}"
@@ -21,13 +21,13 @@
       loop: "{{ groups['webservers'] }}"
 
     - name: Establish AWS load balancer
-      community.aws.elb_network_lb:
+      community.aws.elb_application_lb:
         name: "{{ academy_user }}-webserver-lb"
         region: "{{ aws.region }}"
         subnets:
           - "{{ aws.subnet }}"
         listeners:
-          - Protocol: TCP
+          - Protocol: HTTP
             Port: 80
             DefaultActions:
               - Type: forward
