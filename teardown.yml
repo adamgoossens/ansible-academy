@@ -1,6 +1,11 @@
 - name: "Destroy environment"
   hosts: localhost
   gather_facts: false
+  module_defaults:
+    group/community.aws.aws:
+      region: "{{ aws.region }}"
+    group/amazon.aws.aws:
+      region: "{{ aws.region }}"
   tasks:
     - name: "{{ academy_user }} - destroy virtual machines"
       amazon.aws.ec2_instance:
