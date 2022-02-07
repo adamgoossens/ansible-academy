@@ -8,6 +8,7 @@
         port: 80
         vpc_id: "{{ aws.vpc }}"
         region: "{{ aws.region }}"
+        deregistration_delay_timeout_seconds: 2
         state: present
 
     - name: Create one target per webserver VM
@@ -46,7 +47,7 @@
         alias: yes
         alias_hosted_zone_id: "{{ elb.canonical_hosted_zone_id }}"
         record: "{{ academy_user }}.{{ aws.hosted_zone }}"
-        value: "{{ elb.dns_name }}"
+        value: "{{ elb.dns_name }}."
         type: "A"
         zone: "{{ aws.hosted_zone }}."
         overwrite: yes
