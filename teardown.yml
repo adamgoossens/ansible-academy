@@ -18,9 +18,9 @@
         type: 'A'
       register: rec
 
-    - debug: var=rec
-
     - name: "{{ academy_user }} - destroy Route53 record"
+      when:
+        - rec.resource_record_sets|length > 0
       community.aws.route53:
         record: "{{ rec.set.record }}"
         zone: "{{ aws.hosted_zone }}"
