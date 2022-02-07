@@ -26,6 +26,7 @@
         zone: "{{ aws.hosted_zone }}"
         state: absent
         type: '{{ rec.set.type }}'
+        value: '{{ rec.set.value }}'
         alias: True
         alias_hosted_zone_id: "{{ rec.set.alias_hosted_zone_id }}"
 
