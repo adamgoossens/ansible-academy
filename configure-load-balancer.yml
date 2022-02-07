@@ -3,7 +3,7 @@
   tasks:
     - name: Create target group
       community.aws.elb_target_group:
-        name: "{{username}}-webserver-group"
+        name: "{{academy_user}}-webserver-group"
         protocol: http
         port: 80
         vpc_id: "{{ aws.vpc_id }}"
@@ -11,7 +11,7 @@
 
     - name: Create one target per webserver VM
       community.aws.elb_target:
-        target_group_name: "{{username}}-webserver-group"
+        target_group_name: "{{academy_user}}-webserver-group"
         target_id: "{{ instance['instance_id'] }}"
         state: present
       vars:
@@ -20,7 +20,7 @@
 
     - name: Establish AWS load balancer
       community.aws.elb_network_lb:
-        name: "{{ username }}-webserver-lb"
+        name: "{{ academy_user }}-webserver-lb"
         subnets:
           - "{{ aws.subnet_id }}"
         listeners:
@@ -28,5 +28,5 @@
             Port: 80
             DefaultActions:
               - Type: forward
-                TargetGroupName: "{{ username }}-webserver-group"
+                TargetGroupName: "{{ academy_user }}-webserver-group"
         state: present
