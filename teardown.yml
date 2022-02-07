@@ -14,9 +14,10 @@
         filters:
           'tag:User': '{{ academy_user }}'
 
-    - name: "{{ academy_user }} - destroy elb target group"
-      community.aws.elb_target_group:
-        name: "{{academy_user}}-webserver-group"
+    - name: "{{ academy_user }} - destroy Route53 record"
+      community.aws.route53:
+        record: "{{ academy_user }}.{{ aws.hosted_zone }}"
+        zone: "{{ aws.hosted_zone }}"
         state: absent
 
     - name: "{{ academy_user }} - destroy elb"
@@ -24,8 +25,7 @@
         name: "{{ academy_user }}-webserver-lb"
         state: absent
 
-    - name: "{{ academy_user }} - destroy Route53 record"
-      community.aws.route53:
-        record: "{{ academy_user }}.{{ aws.hosted_zone }}"
-        zone: "{{ aws.hosted_zone }}"
+    - name: "{{ academy_user }} - destroy elb target group"
+      community.aws.elb_target_group:
+        name: "{{academy_user}}-webserver-group"
         state: absent
