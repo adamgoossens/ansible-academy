@@ -27,6 +27,8 @@
         subnets:
           - "{{ aws.subnet_az_a }}"
           - "{{ aws.subnet_az_b }}"
+        security_groups:
+          - "{{ aws.securitygroup }}"
         listeners:
           - Protocol: HTTP
             Port: 80
