@@ -27,7 +27,7 @@
         subnets:
           - "{{ aws.subnet }}"
         listeners:
-          - Protocol: TCP
+          - Protocol: HTTP
             Port: 80
             DefaultActions:
               - Type: forward
