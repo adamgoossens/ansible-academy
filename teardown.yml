@@ -1,0 +1,30 @@
+- name: "Destroy environment"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: "{{ academy_user }} - destroy virtual machines"
+      amazon.aws.ec2_instance:
+        name: "{{ academy_user }}-vm-{{idx}}"
+        state: absent
+        wait: true
+      loop:
+        - "{{ aws.subnet_az_a }}"
+        - "{{ aws.subnet_az_b }}"
+      loop_control:
+        index_var: idx
+
+    - name: "{{ academy_user }} - destroy elb target group"
+      community.aws.elb_target_group:
+        name: "{{academy_user}}-webserver-group"
+        state: absent
+
+    - name: "{{ academy_user }} - destroy elb"
+      community.aws.elb_application_lb:
+        name: "{{ academy_user }}-webserver-lb"
+        state: absent
+
+    - name: "{{ academy_user }} - destroy Route53 record"
+      community.aws.route53:
+        record: "{{ academy_user }}.{{ aws.hosted_zone }}"
+        zone: "{{ aws.hosted_zone }}"
+        state: absent
