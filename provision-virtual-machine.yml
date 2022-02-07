@@ -1,10 +1,10 @@
-- name: "Provision virtual machine"
+- name: "Provision virtual machines"
   hosts: localhost
   gather_facts: false
   tasks:
     - name: "{{ academy_user }} - provision virtual machine"
       amazon.aws.ec2_instance:
-        name: "{{ academy_user }}-vm"
+        name: "{{ academy_user }}-vm-{{item}}"
         tags:
           User: "{{ academy_user }}"
         vpc_subnet_id: "{{ aws.subnet }}"
@@ -17,3 +17,6 @@
           assign_public_ip: true
         security_group: "{{ aws.securitygroup }}"
         state: running
+      loop:
+        - 1
+        - 2
