@@ -25,6 +25,7 @@
     - name: Establish AWS load balancer
       community.aws.elb_application_lb:
         name: "{{ academy_user }}-webserver-lb"
+        wait: yes
         region: "{{ aws.region }}"
         subnets:
           - "{{ aws.subnet_az_a }}"
@@ -53,6 +54,14 @@
         zone: "{{ aws.hosted_zone }}."
         overwrite: yes
         state: present
+
+    - name: Wait until the application can be accessed
+      uri:
+        url: "http://{{academy_user}}.{{aws_hosted_zone}}"
+      register: url
+      until: url.status == 200
+      delay: 10
+      retries: 100
 
     - debug:
         msg: "Your web application can be accessed here: http://{{ academy_user }}.{{ aws.hosted_zone }}"
