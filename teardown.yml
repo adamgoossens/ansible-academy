@@ -15,7 +15,7 @@
         targets: []
         protocol: http
         port: 80
-        vpc_id: "{{ aws.vpc_id }}"
+        vpc_id: "{{ aws.vpc }}"
         modify_targets: True
         state: present
         region: "{{ aws.region }}"
