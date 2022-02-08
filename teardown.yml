@@ -11,8 +11,11 @@
 
     - name: Remove targets from target group for ELB
       community.aws.elb_target_group:
-        target_group_name: "{{academy_user}}-webserver-group"
+        name: "{{academy_user}}-webserver-group"
         targets: []
+        protocol: http
+        port: 80
+        vpc_id: "{{ aws.vpc_id }}"
         modify_targets: True
         state: present
         region: "{{ aws.region }}"
