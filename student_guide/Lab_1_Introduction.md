@@ -108,7 +108,30 @@ You will see something like this:
 * The project used by the job template (more on Projects later).
 * Other configuration for the job, such as the execution environment (more later), privilege escalation, additional parameters, etc.
 
-You will see three job templates have been made for you by default:
+You will see three job templates have been made for you by default. You will use those in later labs as we build out an automation workflow.
 
-<<< IMAGE >>>>
+For now, click on "Provision Virtual Machines". You'll see the following:
+
+![Provision Virtual Machine job template](/student_guide/images/lab1_pvm_view.png)
+
+This shows us one job template that we have pre-defined for you. Note the following:
+
+* This is unique to your organisation.
+* This resides within your personal Project; more on this next.
+* We use a custom execution environment, called the "Academy Environment"; more on this next.
+* We're using a credential here. You can *use* the credential, but you can't *view* the sensitive parts of the credential.
+
+## Projects
+
+Click "Projects" in the side menu, under "Resources". You'll see the following:
+
+![Project list](/student_guide/images/lab1_project_list.png)
+
+We have pre-defined a project for you. Projects are a logical collection of Ansible automation, usually held in source control.
+
+Click on your personal project that we have created. You will see the following:
+
+![Project overview](/student_guide/images/lab1_project_overview.png)
+
+You're using automation that we have written for you, hosted in a source code repository on GitHub.
 
