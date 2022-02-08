@@ -57,7 +57,7 @@
 
     - name: Wait until the application can be accessed
       uri:
-        url: "http://{{academy_user}}.{{aws_hosted_zone}}"
+        url: "http://{{academy_user}}.{{aws.hosted_zone}}"
       register: url
       until: url.status == 200
       delay: 10
