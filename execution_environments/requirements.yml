@@ -1,6 +1,0 @@
----
-collections:
-  - amazon.aws
-  - azure.azcollection
-  - vmware.vmware_rest
-  - ansible.posix
