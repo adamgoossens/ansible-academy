@@ -9,35 +9,10 @@
         filters:
           'tag:User': '{{ academy_user }}'
 
-    - name: "{{ academy_user }} - fetch Route53 record"
-      community.aws.route53:
-        state: get
-        record: "{{ academy_user }}.{{ aws.hosted_zone }}"
-        zone: "{{ aws.hosted_zone }}"
-        type: 'A'
-      register: rec
-
-    - name: "{{ academy_user }} - destroy Route53 record"
-      when:
-        - rec.resource_record_sets|length > 0
-      community.aws.route53:
-        record: "{{ rec.set.record }}"
-        zone: "{{ aws.hosted_zone }}"
-        state: absent
-        type: '{{ rec.set.type }}'
-        value: '{{ rec.set.value }}'
-        alias: True
-        alias_hosted_zone_id: "{{ rec.set.alias_hosted_zone_id }}"
-
-    - name: "{{ academy_user }} - destroy elb"
-      community.aws.elb_application_lb:
-        name: "{{ academy_user }}-webserver-lb"
-        state: absent
-        region: "{{ aws.region }}"
-
-    - name: "{{ academy_user }} - destroy elb target group"
+    - name: Remove targets from target group for ELB
       community.aws.elb_target_group:
-        name: "{{academy_user}}-webserver-group"
-        state: absent
+        target_group_name: "{{academy_user}}-webserver-group"
+        targets: []
+        modify_targets: True
+        state: present
         region: "{{ aws.region }}"
-
