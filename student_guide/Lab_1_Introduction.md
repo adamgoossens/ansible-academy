@@ -95,7 +95,7 @@ Feel free to poke around in those areas that you can access; we will also cover 
 
 In the left menu, click "Resources -> Templates":
 
-![Template menu entry](/student_guide/images/lab1_templates_menu)
+![Template menu entry](/student_guide/images/lab1_templates_menu.png)
 
 You will see something like this:
 
