@@ -1,5 +1,0 @@
-number_of_attendees: 10
-github_repo_url: https://github.com/adamgoossens/ansible-academy.git
-aws_region: ap-southeast-2
-aws_rhel85_ami_id: ami-0ad5c7d0eee639fe1
-academy_execution_environment_image: quay.io/agoossen/academy-ee:latest
