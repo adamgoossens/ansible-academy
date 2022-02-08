@@ -67,11 +67,9 @@ You will see a screen like this:
 
 Your credentials will be:
 
-|--------|------------|
 |Username|Password    |
 |--------|------------|
 | userX  | 1800redhat |
-|--------|------------|
 
 Where "X" is your student number the facilitator assigned to you.
 
