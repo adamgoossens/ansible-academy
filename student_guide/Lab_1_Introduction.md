@@ -63,7 +63,7 @@ Open it in your web browser of choice.
 
 You will see a screen like this:
 
-![AAP Login](/images/lab1_login.png)
+![AAP Login](/student_guide/images/lab1_login.png)
 
 Your credentials will be:
 
@@ -84,7 +84,7 @@ workshop attendees are using the same platform, but Automation Platform has been
 
 We do this using the Automation Platform's multi-tenancy capability, **Organizations**.
 
-![AAP Dashboard](/images/lab1_dashboard.png)
+![AAP Dashboard](/student_guide/images/lab1_dashboard.png)
 
 ## The Side Menu
 
@@ -97,11 +97,11 @@ Feel free to poke around in those areas that you can access; we will also cover 
 
 In the left menu, click "Resources -> Templates":
 
-![Template menu entry](/images/lab1_templates_menu)
+![Template menu entry](/student_guide/images/lab1_templates_menu)
 
 You will see something like this:
 
-![Job template list](/images/lab1_templates_screen.png)
+![Job template list](/student_guide/images/lab1_templates_screen.png)
 
 "Job Templates" are defined pieces of automation that can be launched through a single-click. A job template will define:
 
