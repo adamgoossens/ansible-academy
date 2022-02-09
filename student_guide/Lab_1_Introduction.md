@@ -75,7 +75,7 @@ Your credentials will be:
 
 Where "X" is your student number the facilitator assigned to you.
 
-Go ahead an log in with your username and password.
+Go ahead and log in with your username and password.
 
 ### The Dashboard
 
