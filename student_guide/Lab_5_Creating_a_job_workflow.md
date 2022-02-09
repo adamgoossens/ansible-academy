@@ -133,7 +133,7 @@ Your workflow is running. Each of the nodes will be run in sequence. You can cli
 
 Give the workflow a few minutes to complete:
 
-![Completed workflow](/student_guide/images/lab5_completed_worfklow.png)
+![Completed workflow](/student_guide/images/lab5_completed_workflow.png)
 
 Once it has completed, go back to your web browser to your personal URL that you used last time to access your application. If you need the URL again, click on 
 the "Configure Load Balancer" node in the workflow you just ran and look at the output of the job.
