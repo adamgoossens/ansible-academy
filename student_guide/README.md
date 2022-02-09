@@ -6,8 +6,8 @@ take part - in fact, you don't need to write any Ansible automation **at all** t
 There are multiple labs below. Complete each one in sequence. They are small and designed to be very quick to complete.
 
 * [Lab 1: An introduction to Ansible Automation Platform](/student_guide/Lab_1_Introduction.md)
-* Lab 2: Lauching an existing job template.
-* Lab 3: Creating your own job template.
-* Lab 4: Configuring network infrastructure in AWS.
-* Lab 5: Creating a job template workflow.
-* Lab 6 (optional): Adding approval steps into your workflow.
+* [Lab 2: Lauching an existing job template.](/student_guide/Lab_2_Launching_a_job.md)
+* [Lab 3: Creating your own job template.](/student_guide/Lab_3_Creaing_a_job_template.md)
+* [Lab 4: Configuring network infrastructure in AWS.](/student_guide/Lab_4_Network_infrastructure.md)
+* [Lab 5: Creating a job template workflow.](/student_guide/Lab_5_Creating_a_job_workflow.md)
+* [Lab 6 (optional): Adding approval steps into your workflow.](/student_guide/Lab_6_Workflow_approvals.md)
