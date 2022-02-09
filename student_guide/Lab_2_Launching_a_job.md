@@ -68,3 +68,5 @@ This is a very short lab. You have:
 * Reviewed the list of Jobs, noting that you can only view the Jobs your user has permission to see.
 
 In the next lab we're going to create some new Job Templates and execute them, using automation that already exists in your project.
+
+[On to Lab 3!](/student_guide/Lab_3_Creating_a_job_template.md)

@@ -50,4 +50,4 @@ Instead, in the next lab we are going to:
 * Link all of the job templates together into a Workflow.
 * Run the workflow again, and view the results.
 
-See you in the next lab!
+[On to the fifth and final Lab!](/student_guide/Lab_5_Creating_a_job_workflow.md)

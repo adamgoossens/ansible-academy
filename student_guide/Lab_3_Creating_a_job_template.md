@@ -144,4 +144,4 @@ You have now:
 
 There's one step left to do - we are going to configure AWS network infrastructure to allow you to access your application.
 
-
+[On to Lab 4!](/student_guide/Lab_4_Network_infrastructure.md)

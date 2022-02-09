@@ -199,3 +199,5 @@ This is just a simple walkthrough lab. You have:
 * Toured Job Templates, Inventories, Projects, Credentials and Execution Environments.
 
 In the next lab we are going to deploy our first virtual machines by launching a job template.
+
+[On to lab 2!](/student_guide/Lab_2_Launching_a_job.md)
