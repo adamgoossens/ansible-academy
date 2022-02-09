@@ -49,7 +49,7 @@ come out of the box with the platform. You are able to create your own, custom C
 
 For now, select "Machine". Then select your "Virtual Machine Key (userX)" and click "Select":
 
-![VM Key](/student_guide/images/lab3_vm_key.png)
+![VM Key](/student_guide/images/lab3_vm_cred.png)
 
 Your top half of the create job template form should look like this (replace "user2" with your own username):
 
