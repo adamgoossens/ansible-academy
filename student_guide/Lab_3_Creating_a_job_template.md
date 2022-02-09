@@ -116,6 +116,9 @@ Our inventory now has two hosts added, fetched dynamically from Amazon Web Servi
 
 If you check under the "Groups" tab you will also now see two groups: "aws_ec2" and "webservers", and both of your hosts will be in the "webservers" group.
 
+It is possible to require that dynamic inventory be re-synchronised before a job template is run, or to run the synchronisation on a schedule. In this workshop 
+we will sync the inventory manually for now, and in a later lab you will include this step as part of an Automation Workflow.
+
 Now we can go back and re-launch your job template.
 
 ### Launch attempt #2
