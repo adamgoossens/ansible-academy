@@ -55,7 +55,9 @@ The mesh creates a single flat "network" from the perspective of the Automation 
 nodes in the mesh until it reaches the desired execution node. There may be intermediate "hop nodes" between the controller and execution node, but the Controller 
 will be unaware of them.
 
-## Logging in
+## The Lab
+
+### Logging in
 
 Your instructor will have given you a URL to access the automation controller.
 
@@ -75,7 +77,7 @@ Where "X" is your student number the facilitator assigned to you.
 
 Go ahead an log in with your username and password.
 
-## The Dashboard
+### The Dashboard
 
 Upon logging in you will see the Automation Platform Dashboard. This gives you an 'at-a-glance' view of the state of automation that you have access to. All 
 workshop attendees are using the same platform, but Automation Platform has been configured to keep you isolated from one another.
@@ -84,14 +86,14 @@ We do this using the Automation Platform's multi-tenancy capability, **Organizat
 
 ![AAP Dashboard](/student_guide/images/lab1_dashboard.png)
 
-## The Side Menu
+### The Side Menu
 
 The side menu gives you access to the various interfaces of the Automation Platform. What you can see will change depending on your permissions; for example,
 you are unable to view the links to modify Platform-wide configuration as you do not have the permissions to do so.
 
 Feel free to poke around in those areas that you can access; we will also cover some of them as we go through the workshop.
 
-## Job Templates
+### Job Templates
 
 In the left menu, click "Resources -> Templates":
 
@@ -121,7 +123,7 @@ This shows us one job template that we have pre-defined for you. Note the follow
 * We use a custom execution environment, called the "Academy Environment"; more on this next.
 * We're using a credential here. You can *use* the credential, but you can't *view* the sensitive parts of the credential.
 
-## Projects
+### Projects
 
 Click "Projects" in the side menu, under "Resources". You'll see the following:
 
@@ -135,3 +137,65 @@ Click on your personal project that we have created. You will see the following:
 
 You're using automation that we have written for you, hosted in a source code repository on GitHub.
 
+### Credentials
+
+Click "Credentials" under "Resources" in the side menu. You will see this:
+
+![Credential list](/student_guide/images/lab1_credential_list.png)
+
+Credentials are sensitive values that need to be passed to playbooks. Ansible Automation Platform allows you to allow people to *use* credentials whilst being 
+prevented from *seeing* those credentials.
+
+In this lab we have pre-defined three credentials for you:
+
+* One we use for dynamic inventory, to automatically gather information from Amazon Web Services
+* One to allow you to deploy virtual machines into AWS EC2
+* One to allow your automation to connect to these virtual machines and configure them.
+
+Feel free to click on some of those credentials; note that you cannot modify them, nor view the sensitive components of the credential.
+
+### Inventory
+
+Click "Inventory" under "Resources" in the side menu. You will see this:
+
+![Inventory list](/student_guide/images/lab1_inventory.png)
+
+Inventories are lists of hosts and devices that your automation will run against. Feel free to dig into your inventory - you'll notice there are no hosts or groups defined within.
+
+We will be using **dynamic inventory** in this workshop - rather than defining hosts and devices manually, instead we will query Amazon Web Services directly 
+to build out your inventory. More on this later.
+
+### Execution Environments
+
+Lastly, click "Execution Environments" under "Administration", right at the bottom of the left menu. You will see this:
+
+![Execution Environments](/student_guide/images/lab1_ee.png)
+
+Execution Environments provide a consistent environment for your automation. They are Linux containers, and within them are:
+
+* Ansible
+* Any Ansible content you need, e.g. collections or roles
+* Any 3rd party packages you require (e.g. Python packages, OS packages).
+
+They look something like this:
+
+![Structure of an EE](/student_guide/images/lab1_ee_structure.png)
+
+AAP ships with a few Execution Environments out of the box:
+
+* A "Minimal" environment, containing nothing but base Ansible. This is an excellent starting point for building your own Execution Environments; we 
+  won't do that in this workshop.
+* A "Default" environent, with base Ansible plus a curated selection of content.
+* An "Ansible 2.9" environment. This contains Ansible version 2.9 to allow for an easy transition for older automation written prior to Ansible 2.10.
+
+We have created a custom EE for you called the **Academy Environment** - this includes the necessary collections to work with Amazon Web Services.
+
+## Summing up
+
+This is just a simple walkthrough lab. You have:
+
+* Logged into Ansible Automation Platform.
+* Been introduced to the broad implementation of the Platform.
+* Toured Job Templates, Inventories, Projects, Credentials and Execution Environments.
+
+In the next lab we are going to deploy our first virtual machines by launching a job template.
